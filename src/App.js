@@ -1,22 +1,39 @@
+// this is inbuilt react function use for intilization
 import { useState } from 'react'
 
 function App() {
-  // statefull variable
-  // let counter = 100
+  let str1 = 'Home'
+  let str2 = 'Explore'
+  let str3 = 'Notification'
+  let [counter, setcounter] = useState(1)
 
-  let [counter, setcounter] = useState(10)
+  // let city = "mumbai";
+  let [city, setcity] = useState('mumbai')
+  let changecity = () => {
+    city = 'Hello' + city
+
+    // RE-RENDERING THE CITY VALUE
+    setcity(city)
+  }
 
   let increment = () => {
-    counter = counter + 1
+    // lOGICAL PART
+    counter++
+    console.log(counter)
 
-    // RE-RENDER
+    // DOM Update part.
     setcounter(counter)
   }
 
-  //  create html buttons using tag and call increment function
+  //  create html buttons using tag and call increment and city function
   return (
     <div>
-      <h1>Counter Application</h1>
+      <h1>{city}</h1>
+      <input type="button" value="change city" onClick={changecity} />
+      <hr />
+      <h1>{str1}</h1>
+      <h1>{str2}</h1>
+      <h1>{str3}</h1>
       <h1>{counter}</h1>
       <input type="button" value="Incremenet" onClick={increment} />
     </div>
