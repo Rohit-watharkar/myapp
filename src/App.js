@@ -1,19 +1,19 @@
 function App() {
-  // Data Member
-  let project = 'Counter Application'
-  let btnvalu = 'click Mee'
+  // stateless variable
+  let counter = 100
 
-  // Member Function
-  let clickMe = () => alert()
-  let increment = () => {}
-  let decrement = () => {}
+  // increamenet value after clicking button
+  let increment = () => {
+    counter = counter + 1
+    console.log(counter)
+  }
 
-  // jsx
+  //  create html buttons using tag and call increment function
   return (
     <div>
-      <h1>{project}</h1>
-      <input type="button" value={btnvalu} onClick={clickMe} />
-      <input type="button" value="Increment" onClick={increment} />
+      <h1>Counter Application</h1>
+      <h1>{counter}</h1>
+      <input type="button" value="Incremenet" onClick={increment} />
     </div>
   )
 }
