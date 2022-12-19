@@ -1,11 +1,16 @@
-function App() {
-  // stateless variable
-  let counter = 100
+import { useState } from 'react'
 
-  // increamenet value after clicking button
+function App() {
+  // statefull variable
+  // let counter = 100
+
+  let [counter, setcounter] = useState(10)
+
   let increment = () => {
     counter = counter + 1
-    console.log(counter)
+
+    // RE-RENDER
+    setcounter(counter)
   }
 
   //  create html buttons using tag and call increment function
