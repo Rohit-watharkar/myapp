@@ -1,10 +1,6 @@
-function App() {
-  return (
-    <div>
-      <h1>hello</h1>
-      <h1></h1>
-    </div>
-  )
-}
+// Single Line JSX
 
-export default App
+function App(){
+  return <h1>Hello World!!!</h1>
+}
+export default App;
