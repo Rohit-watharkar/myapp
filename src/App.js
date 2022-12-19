@@ -1,6 +1,9 @@
-// Single Line JSX
-
-function App(){
-  return <h1>Hello World!!!</h1>
+// multi Tag
+function App() {
+  return (
+    <div>
+      <h1>Div And H1</h1>
+    </div>
+  )
 }
-export default App;
+export default App
