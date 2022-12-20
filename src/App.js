@@ -1,14 +1,23 @@
-function App() {
-  // creat object and item store in the map of array
-  let title = 'Map Demo'
-  let list = ['Sangli', 'Kolhapur', 'Satara']
+import { useState } from 'react'
 
-  // access the item in the array and print on the browser
+function App() {
+  let title = 'Map Demo'
+  let [list, setlist] = useState([])
+
+  //...list this is cloning use for take record as it is in the list
+  let addItem = () => {
+    // logical part
+    let newList = [...list, 'Sangli islampur']
+
+    // dom part
+    setlist(newList)
+  }
+
   return (
     <div>
-      <h1> {title} </h1>
+      <h1>{title}</h1>
+      <input type="button" value="Add Item into List" onClick={addItem} />
 
-      {/* map is use for store and item is string store in the array */}
       {list.map((item) => (
         <h1>{item}</h1>
       ))}
