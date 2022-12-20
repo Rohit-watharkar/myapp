@@ -1,43 +1,13 @@
-// this is inbuilt react function use for intilization
-import { useState } from 'react'
-
 function App() {
-  let str1 = 'Home'
-  let str2 = 'Explore'
-  let str3 = 'Notification'
-  let [counter, setcounter] = useState(1)
+  let title = 'map Demo'
+  let user = { id: 1, city: 'mumbai' }
 
-  // let city = "mumbai";
-  let [city, setcity] = useState('mumbai')
-  let changecity = () => {
-    city = 'Hello' + city
-
-    // RE-RENDERING THE CITY VALUE
-    setcity(city)
-  }
-
-  let increment = () => {
-    // lOGICAL PART
-    counter++
-    console.log(counter)
-
-    // DOM Update part.
-    setcounter(counter)
-  }
-
-  //  create html buttons using tag and call increment and city function
+  // we user map object and access the city we can not access directly bcz multiple item present in the city
   return (
     <div>
-      <h1>{city}</h1>
-      <input type="button" value="change city" onClick={changecity} />
-      <hr />
-      <h1>{str1}</h1>
-      <h1>{str2}</h1>
-      <h1>{str3}</h1>
-      <h1>{counter}</h1>
-      <input type="button" value="Incremenet" onClick={increment} />
+      <h1>{title}</h1>
+      <h1>{user.city}</h1>
     </div>
   )
 }
-
 export default App
