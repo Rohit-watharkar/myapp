@@ -1,13 +1,21 @@
 function App() {
-  let title = 'map Demo'
-  let user = { id: 1, city: 'mumbai' }
+  // creat object and item store in the map of array
+  let title = 'Map Demo'
+  let list = ['Sangli', 'Kolhapur', 'Satara']
 
-  // we user map object and access the city we can not access directly bcz multiple item present in the city
+  // access the item in the array and print on the browser
   return (
     <div>
-      <h1>{title}</h1>
-      <h1>{user.city}</h1>
+      <h1> {title} </h1>
+
+      {/* map is use for store and item is string store in the array */}
+      {list.map((item) => (
+        <h1>{item}</h1>
+      ))}
     </div>
   )
 }
+
 export default App
+
+// [Sangli, Kolhapur,satara] => [<h1>Sangli</h1>, <h1>Kolhapur</h1>,<h1>Satara</h1>]
