@@ -1,54 +1,29 @@
+import { useState } from 'react'
+
 function App() {
-  // without parameter pass
-  let clickMe1 = () => {
-    console.log('Hello Rohit!..')
-  }
+  let [message, setmessage] = useState('Rohit')
 
-  // pass Event as parameter
-  let clickMe2 = (e) => {
-    console.log('e')
-  }
+  let updateMessage = (e) => {
+    // target returns the DOM element that triggered a specific event,
+    //  so we can retrieve any property/ attribute with a value
+    message = e.target.value
 
-  // Custom Parameter
-  let clickMe3 = (p1) => {
-    console.log(p1)
-  }
-
-  // Event + Custom Parameter
-  let clickMe4 = (e, p1) => {
-    console.log(e, p1)
+    setmessage(message)
   }
 
   return (
     <div>
-      <h1>btn Click Demo!..</h1>
+      <h1>Working with input</h1>
 
-      {/* Default no Parameter */}
-      <input type="button" value="Click Me 1" onClick={clickMe1} />
-
-      {/* Default Event Parameter */}
-      <input type="button" value="Click Me 2" onClick={clickMe2} />
-
-      {/* Custom Parameter */}
       <input
-        type="button"
-        value="Click Me 3"
-        onClick={() => clickMe3('primary')}
+        type="text"
+        placeholder="Enter message"
+        value={message}
+        // The onChange event in React detects when the value of an input element changes.
+        onChange={updateMessage}
       />
-      {/* Custom Parameter */}
-      <input
-        type="button"
-        value="Click Me 3"
-        onClick={() => clickMe3('danger')}
-      />
-      {/* Event + Custom Parameter */}
-      <input
-        type="button"
-        value="Click Me 4"
-        onClick={(e) => clickMe4(e, 'Rutu!...')}
-      />
+      <h1>{message}</h1>
     </div>
   )
 }
-
 export default App
