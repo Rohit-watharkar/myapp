@@ -1,47 +1,51 @@
-// import function for initilization uses
-import { useState } from 'react'
-
 function App() {
-  // datamember
-  let [theme, setTheme] = useState('primary')
+  // without parameter pass
+  let clickMe1 = () => {
+    console.log('Hello Rohit!..')
+  }
 
-  // member function
-  // after clicking parameter pass from onclik and this parameter assign to p1 and p1 assign to the them
-  // intially them first time assign
-  let updateTheme = (p1 = 'primary') => {
-    theme = p1
-    setTheme(theme)
+  // pass Event as parameter
+  let clickMe2 = (e) => {
+    console.log('e')
+  }
+
+  // Custom Parameter
+  let clickMe3 = (p1) => {
+    console.log(p1)
+  }
+
+  // Event + Custom Parameter
+  let clickMe4 = (e, p1) => {
+    console.log(e, p1)
   }
 
   return (
     <div>
-      {/* all theme assign to background  */}
-      <h1 className={`bg-${theme} text-light p-3`}>Bootstrap styling!!..</h1>
+      <h1>btn Click Demo!..</h1>
 
+      {/* Default no Parameter */}
+      <input type="button" value="Click Me 1" onClick={clickMe1} />
+
+      {/* Default Event Parameter */}
+      <input type="button" value="Click Me 2" onClick={clickMe2} />
+
+      {/* Custom Parameter */}
       <input
-        //then given on the button
-        className="btn btn-primary"
         type="button"
-        value="primary theme"
-        // call the function after clicking button
-        // onClick={updateTheme}
-        onClick={() => updateTheme('primary')}
+        value="Click Me 3"
+        onClick={() => clickMe3('primary')}
       />
+      {/* Custom Parameter */}
       <input
-        //then given on the button
-        className="btn btn-success"
         type="button"
-        value="success theme"
-        // call the function after clicking button
-        onClick={() => updateTheme('success')}
+        value="Click Me 3"
+        onClick={() => clickMe3('danger')}
       />
+      {/* Event + Custom Parameter */}
       <input
-        //then given on the button
-        className="btn btn-danger"
         type="button"
-        value="danger theme"
-        // call the function after clicking button
-        onClick={() => updateTheme('danger')}
+        value="Click Me 4"
+        onClick={(e) => clickMe4(e, 'Rutu!...')}
       />
     </div>
   )
