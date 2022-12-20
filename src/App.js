@@ -6,22 +6,10 @@ function App() {
   let [theme, setTheme] = useState('primary')
 
   // member function
-  let makeprimaryTheme = () => {
-    // after cliking button this theme given bootstarp styling
-    theme = 'primary'
-    // them overrride on them using setthem
-    setTheme(theme)
-  }
-  let makesuccessTheme = () => {
-    // after cliking button this theme given bootstarp styling
-    theme = 'success'
-    // them overrride on them using setthem
-    setTheme(theme)
-  }
-  let makedangerTheme = () => {
-    // after cliking button this theme given bootstarp styling
-    theme = 'danger'
-    // them overrride on them using setthem
+  // after clicking parameter pass from onclik and this parameter assign to p1 and p1 assign to the them
+  // intially them first time assign
+  let updateTheme = (p1 = 'primary') => {
+    theme = p1
     setTheme(theme)
   }
 
@@ -36,7 +24,8 @@ function App() {
         type="button"
         value="primary theme"
         // call the function after clicking button
-        onClick={makeprimaryTheme}
+        // onClick={updateTheme}
+        onClick={() => updateTheme('primary')}
       />
       <input
         //then given on the button
@@ -44,7 +33,7 @@ function App() {
         type="button"
         value="success theme"
         // call the function after clicking button
-        onClick={makesuccessTheme}
+        onClick={() => updateTheme('success')}
       />
       <input
         //then given on the button
@@ -52,7 +41,7 @@ function App() {
         type="button"
         value="danger theme"
         // call the function after clicking button
-        onClick={makedangerTheme}
+        onClick={() => updateTheme('danger')}
       />
     </div>
   )
