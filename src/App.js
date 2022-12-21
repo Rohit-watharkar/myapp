@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 function App() {
   let [title] = useState('API Demo')
+  let [message, setMessage] = useState('')
   let [messageList, setMessageList] = useState([])
 
   //spl function :: Hook :: Like Constructor :: Called while the Componenet is Initilized
@@ -10,6 +11,12 @@ function App() {
     // console.log("i am getting called");
     getAllMessages()
   }, [])
+
+  let handleOnChangeMessage = (e) => {
+    message = e.target.value
+    setMessage(message)
+    // setMessage(e.target.value) // we can also write this way
+  }
 
   // member function
   let getAllMessages = async () => {
@@ -25,11 +32,13 @@ function App() {
     let url = `http://localhost:3001/message`
 
     let data = {
-      message: 'CDAC Message',
+      message: message,
       messageTime: new Date(),
       reply: true,
     }
     await axios.post(url, data)
+
+    setMessage('')
 
     // to Refresh the content
     getAllMessages()
@@ -39,10 +48,19 @@ function App() {
     <div>
       <h1>{title}</h1>
 
-      <input type="button" value="Make/API call" onClick={getAllMessages} />
-      <input type="button" value="Make/API call" onClick={creeateNewMessage} />
-      {messageList.map((item) => (
-        <div>{item.message}</div>
+      <input
+        type="text"
+        placeholder="Hi...whatsapp...!!"
+        value={message}
+        onChange={handleOnChangeMessage}
+      />
+      <input
+        type="button"
+        value="Make/API Post call"
+        onClick={creeateNewMessage}
+      />
+      {messageList.map((item, index) => (
+        <div key={index}>{item.message}</div>
       ))}
     </div>
   )
