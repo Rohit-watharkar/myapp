@@ -29,8 +29,12 @@ function App() {
     <div>
       <h1>{title}</h1>
 
-      <input type="button" value="Make/API call" onClick={getAllMessages} />
-      <input type="button" value="Make/API call" onClick={creeateNewMessage} />
+      <input type="button" value="Make/API Get call" onClick={getAllMessages} />
+      <input
+        type="button"
+        value="Make/API Post call"
+        onClick={creeateNewMessage}
+      />
       {messageList.map((item) => (
         <div>{item.message}</div>
       ))}
