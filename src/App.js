@@ -32,7 +32,7 @@ function App() {
   let creeateNewMessage = async () => {
     let url = `http://localhost:3001/message`
     // console.log(inputRef.current);
-    if (!inputRef.current.checkvalidity()) {
+    if (!inputRef.current.checkValidity()) {
       alert('Invalid')
       return
     }
