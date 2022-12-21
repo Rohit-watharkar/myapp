@@ -1,22 +1,27 @@
-import { Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
+import AppNavLinks from './components/AppNavLinks'
+import Explore from './components/Explore'
+import Home from './components/Home'
+import Notifications from './components/Notifications'
+import PageNotFound from './components/PageNotFound'
 
 function App() {
   return (
-    <Routes>
-      {/** http://localhost:3000/ */}
-      <Route path="/" element={<h1>Home</h1>} />
+    <div>
+      <Routes>
+        <AppNavLinks />
 
-      {/** http://localhost:3000/home */}
-      <Route path="/home" element={<h1>Home</h1>} />
+        <Route path="/" element={<Home />} />
 
-      {/** http://localhost:3000/explore */}
-      <Route path="/explore" element={<h1>Explore</h1>} />
+        <Route path="/home" element={<Home />} />
 
-      {/** http://localhost:3000/notifications */}
-      <Route path="/notifications" element={<h1>Notifications</h1>} />
+        <Route path="/explore" element={<Explore />} />
 
-      <Route path="*" element={<h1>Page Not Found</h1>} />
-    </Routes>
+        <Route path="/notifications" element={<Notifications />} />
+
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </div>
   )
 }
 
