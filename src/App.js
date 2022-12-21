@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   Link,
   Navigate,
+  Outlet,
   Route,
   RouterProvider,
   Routes,
@@ -10,11 +11,31 @@ import {
 
 function App() {
   let router = createBrowserRouter([
-    { path: '/', element: <P1 /> },
-    { path: '/p1', element: <P1 /> },
-    { path: '/p2', element: <P2 /> },
-    { path: '/p3', element: <P3 /> },
-    { path: '*', element: <h1>Not found</h1> },
+    {
+      path: '/',
+      element: <AppNavLinks />,
+      children: [
+        { path: '', element: <P1 /> },
+        { path: 'p1', element: <P1 /> },
+        {
+          path: 'p2',
+          element: (
+            <ProtectedRoute>
+              <P2 />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'p3',
+          element: (
+            <ProtectedRoute>
+              <P3 />
+            </ProtectedRoute>
+          ),
+        },
+        { path: '*', element: <h1>Not found</h1> },
+      ],
+    },
   ])
 
   return (
@@ -22,6 +43,15 @@ function App() {
       <RouterProvider router={router} />
     </>
   )
+}
+
+function ProtectedRoute({ children }) {
+  let login = localStorage.getItem('login')
+  if (!login) {
+    return <Navigate to="/" replace={true} />
+  }
+
+  return children
 }
 
 function AppNavLinks() {
@@ -32,6 +62,8 @@ function AppNavLinks() {
       <>
         <Link to={'/'}>Home | </Link>
         <Link to={'/p1'}>P1 | </Link>
+
+        <Outlet />
       </>
     )
   } else {
@@ -40,6 +72,8 @@ function AppNavLinks() {
         <Link to={'/'}>Home | </Link>
         <Link to={'/p2'}>P2 | </Link>
         <Link to={'/p3'}>P3 |</Link>
+
+        <Outlet />
       </>
     )
   }
