@@ -1,42 +1,27 @@
-import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Link,
+  Navigate,
+  Route,
+  RouterProvider,
+  Routes,
+  useNavigate,
+} from 'react-router-dom'
 
 function App() {
+  let router = createBrowserRouter([
+    { path: '/', element: <P1 /> },
+    { path: '/p1', element: <P1 /> },
+    { path: '/p2', element: <P2 /> },
+    { path: '/p3', element: <P3 /> },
+    { path: '*', element: <h1>Not found</h1> },
+  ])
+
   return (
     <>
-      <AppNavLinks />
-
-      <Routes>
-        <Route path="/" element={<P1 />} />
-        <Route path="/p1" element={<P1 />} />
-        <Route
-          path="/p2"
-          element={
-            <ProtectedRoute>
-              <P2 />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/p3"
-          element={
-            <ProtectedRoute>
-              <P3 />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
-      </Routes>
+      <RouterProvider router={router} />
     </>
   )
-}
-
-function ProtectedRoute({ children }) {
-  let login = localStorage.getItem('login')
-  if (!login) {
-    return <Navigate to="/" replace={true} />
-  }
-
-  return children
 }
 
 function AppNavLinks() {
