@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
 
 function App() {
+  // Data Member
   let inputRef = useRef()
   let [title] = useState('API Demo')
   let [message, setMessage] = useState('')
@@ -31,8 +32,8 @@ function App() {
 
   let creeateNewMessage = async () => {
     let url = `http://localhost:3001/message`
-
-    if (!inputRef.current.checkvalidity()) {
+    // console.log(inputRef.current);
+    if (!inputRef.current.checkValidity()) {
       alert('Invalid')
       return
     }
