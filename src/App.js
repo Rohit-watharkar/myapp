@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function App() {
+  let inputRef = useRef()
   let [title] = useState('API Demo')
   let [message, setMessage] = useState('')
   let [messageList, setMessageList] = useState([])
@@ -31,6 +32,11 @@ function App() {
   let creeateNewMessage = async () => {
     let url = `http://localhost:3001/message`
 
+    if (!inputRef.current.checkvalidity()) {
+      alert('Invalid')
+      return
+    }
+
     let data = {
       message: message,
       messageTime: new Date(),
@@ -44,6 +50,12 @@ function App() {
     getAllMessages()
   }
 
+  let checkEnterCode = (e) => {
+    if (e.keyCode == 13) {
+      creeateNewMessage()
+    }
+  }
+
   return (
     <div>
       <h1>{title}</h1>
@@ -53,6 +65,12 @@ function App() {
         placeholder="Hi...whatsapp...!!"
         value={message}
         onChange={handleOnChangeMessage}
+        onKeyUp={checkEnterCode}
+        ref={inputRef} //document.queryselector
+        // for entering char min 2 required
+        // if not given then give invalid msg
+        required
+        minLength={2}
       />
       <input
         type="button"
