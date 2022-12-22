@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { deposit, withdraw } from './redux/store'
 
 function App() {
   return (
@@ -11,33 +13,41 @@ function App() {
 }
 
 function Counter1() {
-  let [amount, setAmount] = useState(100)
-
-  let deposit = () => {
-    amount += 50
-    setAmount(amount)
-  }
+  let dispatch = useDispatch()
+  let { userAccount } = useSelector((state) => state)
 
   return (
     <div>
-      <h1>Counter 1 - Amount {amount}</h1>
-      <input type="button" value="Deposit" onClick={deposit} />
+      <h1>Counter 1 - Amount {userAccount.amount}</h1>
+      <input
+        type="button"
+        value="Deposit"
+        onClick={() => dispatch(deposit())}
+      />
     </div>
   )
 }
+
 function Counter2() {
-  let [amount, setAmount] = useState(100)
-
-  let deposit = () => {
-    amount += 50
-    setAmount(amount)
-  }
+  let dispatch = useDispatch()
+  let { userAccount } = useSelector((state) => state)
 
   return (
     <div>
-      <h1>Counter 1 - Amount {amount}</h1>
-      <input type="button" value="Deposit" onClick={deposit} />
+      <h1>Counter 2 - Amount {userAccount.amount}</h1>
+      <input
+        type="button"
+        value="Deposit"
+        onClick={() => dispatch(deposit())}
+      />
+
+      <input
+        type="button"
+        value="Withdraw"
+        onClick={() => dispatch(withdraw())}
+      />
     </div>
   )
 }
+
 export default App
