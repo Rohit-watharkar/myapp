@@ -1,37 +1,24 @@
-import { useState } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
+import { Link, Route, Routes } from 'react-router-dom'
+import AppNavLinks from './components/AppNavLinks'
+import Explore from './components/Explore'
+import Home from './components/Home'
+import Notifications from './components/Notifications'
+import PageNotFound from './components/PageNotFound'
 
 function App() {
   return (
-    // ErrorBoundary is similar like try catch block
-    // FallbackComponenet use for handle error
-    <ErrorBoundary FallbackComponent={HandlerError}>
-      <HelloWorld />
-    </ErrorBoundary>
-  )
-}
-
-// this function use for error handling purpoase
-function HandlerError({ error }) {
-  console.log('This error occoured', error)
-
-  return (
     <div>
-      <h1>An Error Occured..Somthing Wrong in the Code plz check</h1>
+      <AppNavLinks />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </div>
   )
 }
 
-function HelloWorld() {
-  let [user] = useState({ id: 1, name: 'Rutu!..' })
-
-  return (
-    <div>
-      {/* this is Error Line bcz we use array thats whay property name rquired */}
-      {/* <h1>Hello Rohit This is Your NikName!..</h1> <h1>{user}</h1> */}
-      {/* this is correcy Syntax */}
-      <h1>Hello Rohit This is Your NikName!..</h1> <h1>{user.name}</h1>
-    </div>
-  )
-}
 export default App
