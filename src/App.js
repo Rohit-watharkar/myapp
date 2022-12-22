@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import AppNavLinks from './components/AppNavLinks'
 import Explore from './components/Explore'
 import Home from './components/Home'
