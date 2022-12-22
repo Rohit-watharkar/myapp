@@ -1,24 +1,43 @@
-import { Link, Route, Routes } from 'react-router-dom'
-import AppNavLinks from './components/AppNavLinks'
-import Explore from './components/Explore'
-import Home from './components/Home'
-import Notifications from './components/Notifications'
-import PageNotFound from './components/PageNotFound'
+import { useState } from 'react'
 
 function App() {
   return (
     <div>
-      <AppNavLinks />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <Counter1 />
+      <hr />
+      <Counter2 />
     </div>
   )
 }
 
+function Counter1() {
+  let [amount, setAmount] = useState(100)
+
+  let deposit = () => {
+    amount += 50
+    setAmount(amount)
+  }
+
+  return (
+    <div>
+      <h1>Counter 1 - Amount {amount}</h1>
+      <input type="button" value="Deposit" onClick={deposit} />
+    </div>
+  )
+}
+function Counter2() {
+  let [amount, setAmount] = useState(100)
+
+  let deposit = () => {
+    amount += 50
+    setAmount(amount)
+  }
+
+  return (
+    <div>
+      <h1>Counter 1 - Amount {amount}</h1>
+      <input type="button" value="Deposit" onClick={deposit} />
+    </div>
+  )
+}
 export default App
