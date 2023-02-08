@@ -2,6 +2,7 @@
 import './App.css'
 
 function App() {
+  //first we declare and then use
   let mystyle = { color: 'white', background: 'purple' }
 
   return (
